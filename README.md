@@ -5,6 +5,7 @@ Build scripts for single node inference on Intel Cascade Lake processors
 Run `/cm/shared/apps/miniconda/Miniconda3-latest-Linux-x86_64.sh` to install miniconda3 in `~/miniconda3`
 
 # Build
+If necessary, change the conda environment in 'build.sh'
 `bash build.sh`
 
 # Run benchmarks 
