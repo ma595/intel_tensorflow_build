@@ -1,13 +1,14 @@
 #! /bin/bash 
 set -e
 module load intel/compiler/2018u4
-CONDA_NAME=inteltf_source_1
+CONDA_NAME=inteltf_src_1
 
 # conda setup
 # /cm/shared/apps/miniconda/Miniconda3-latest-Linux-x86_64.sh
 . ~/miniconda3/bin/activate
 conda create --name $CONDA_NAME --clone base
 conda activate $CONDA_NAME
+sed -i "s/my_env/${CONDA_NAME}/g" env.sh 
 pip install --upgrade pip
 
 # spack installs 
