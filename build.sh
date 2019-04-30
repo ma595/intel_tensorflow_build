@@ -1,12 +1,15 @@
 #! /bin/bash 
-
+set -e
+module load intel/compiler/2018u4
 PREFIX=/home/ma595.cambridge/
+CONDA_NAME=inteltf_source_1
 
 # conda setup
-/cm/shared/apps/miniconda/Miniconda3-latest-Linux-x86_64.sh
-conda create --name inteltf_source_1 --clone base
+# /cm/shared/apps/miniconda/Miniconda3-latest-Linux-x86_64.sh
+. ~/miniconda3/bin/activate
+conda create --name $CONDA_NAME --clone base
+conda activate $CONDA_NAME
 pip install --upgrade pip
-conda activate inteltf_source_1
 
 # spack installs 
 git clone https://github.com/spack/spack.git
@@ -19,8 +22,10 @@ wget https://github.com/bazelbuild/bazel/releases/download/0.19.2/bazel-0.19.2-i
 bash bazel-0.19.2-installer-linux-x86_64.sh --prefix=${PREFIX}
 export PATH=$PREFIX/bin:$PATH
 
-git clone https://github.com/tensorflow/tensorflow.git
+git clone https://github.com/tensorflow/tensorflow.git tf_src
+cd tf_src
 git checkout 9a19de7a0fdfb21e68e6bbd18a488d4c41aa88f5
+cd ../
 bash ./build_tensorflow.sh 
 
 # benchmark setup
