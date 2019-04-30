@@ -1,7 +1,6 @@
 #! /bin/bash 
 set -e
 module load intel/compiler/2018u4
-PREFIX=/home/ma595.cambridge/
 CONDA_NAME=inteltf_source_1
 
 # conda setup
@@ -19,8 +18,8 @@ spack install gcc@5.4.0
 
 # install tensorflow 
 wget https://github.com/bazelbuild/bazel/releases/download/0.19.2/bazel-0.19.2-installer-linux-x86_64.sh
-bash bazel-0.19.2-installer-linux-x86_64.sh --prefix=${PREFIX}
-export PATH=$PREFIX/bin:$PATH
+bash bazel-0.19.2-installer-linux-x86_64.sh --prefix=$HOME
+export PATH=$HOME/bin:$PATH
 
 git clone https://github.com/tensorflow/tensorflow.git tf_src
 cd tf_src

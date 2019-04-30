@@ -1,7 +1,6 @@
 #! /bin/bash
 
 . ~/miniconda3/bin/activate 
-conda activate inteltf_source_1
 . env.sh
 
 cd ./intel_models/benchmarks
@@ -23,5 +22,5 @@ python launch_benchmark.py \
     --verbose
 
 
-#    --docker-image intelaipg/intel-optimized-tensorflow:PR25765-devel-mkl
+#--docker-image intelaipg/intel-optimized-tensorflow:PR25765-devel-mkl
 #--data-location /home/<user>/dataset/FullImageNetData_directory
